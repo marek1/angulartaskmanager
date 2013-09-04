@@ -1,0 +1,12 @@
+<form name="editForm" novalidate>
+		<label>Task</label>
+		<input id="newTaskHeader" name="newTaskHeader" ng-model="newTaskHeader" required><br/>
+		<label>Description</label>
+		<textarea id="newTaskDescription" ng-model="newTaskDescription" required></textarea><br/>
+		<span class="error" ng-show="editForm.newTaskDescription.$error.required">Required!</span><br>
+	  	<input type="hidden" id="itemNo" name="itemNo" ng-model="itemNo"><br/>
+	  	<input type="hidden" id="important" name="important" ng-model="important"><br/>	  
+		<button class="btn btn-primary" ng-disabled="!editForm.$valid" ng-click="submitNewTask(itemNo,newTaskHeader,newTaskDescription,important)">
+	        Submit
+	  	</button>
+</form>

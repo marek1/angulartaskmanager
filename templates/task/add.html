@@ -1,0 +1,10 @@
+<form name="addForm" novalidate>
+		<label>Task</label>
+		<input id="newTaskHeader" name="newTaskHeader" ng-model="newTaskHeader" required><br/>
+		<label>Description</label>
+		<textarea id="newTaskDescription" ng-model="newTaskDescription" required></textarea><br/>
+		<span class="error" ng-show="addForm.newTaskDescription.$error.required">Required!</span><br>
+		<button class="btn btn-primary" ng-disabled="!addForm.$valid" ng-click="submitNewTask(newTaskHeader,newTaskDescription)">
+	        Submit
+	  	</button>
+</form>

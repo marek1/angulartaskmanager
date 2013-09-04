@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="taskManager">
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
+		<script src="js/task.js"></script>
+	  	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+	  	<link href="css/task.css" rel="stylesheet">
+	</head>
+	<div id="container" ng-controller="taskCtrl">
+        <p><button class="btn btn-primary" ng-click="add()">Add Task</button></p>
+     	<div ng-show="tasks.length">
+	  		<label for="searchText">Search</label> 
+	  		<input name="searchText" id="searchText" ng-model="searchText">
+	  	</div>
+	  	
+		<ul>
+		<li ng-repeat="task in tasks | filter:searchText | orderBy:predicate:reverse">	
+			<div class="l">
+				<span ng-click="changeImportance(task.id)" ng-show="task.important"><img class="icon" src="img/star_full.png"></span> 
+				<span ng-click="changeImportance(task.id)" ng-show="!task.important"><img class="icon" src="img/star_empty.png"></span> 
+				{{task.header}}
+			</div>
+			<div class="r">
+				<span ng-click="edit(task.id)"><i class="icon-edit"></i></span>
+				<span ng-click="delete(task.id)"><i class="icon-minus-sign"></i></span>
+			</div>
+			<div class="cb"></div>
+		</li>
+		</ul>
+		<div ng-show="tasks.length">
+	  		Sort : <a href="" ng-click="predicate = 'header'; reverse=false">alphabet</a> | <a href="" ng-click="predicate = 'important'; reverse=true">important</a>
+  		</div>
+		<div class="r" ng-show="tasks.length">
+	  		<button class="btn btn-small btn-warning" ng-click="clear()">
+		        Delete All
+		  	</button>
+	  	</div>
+	</div>
+	
+</html>
